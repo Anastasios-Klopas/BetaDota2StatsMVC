@@ -1,0 +1,75 @@
+﻿@model BetaDota2StatsMVC.Models.ProfileViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>ProfileViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackedUntil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrackedUntil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Solocompetitive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Solocompetitive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompetitiveRank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompetitiveRank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RankTier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RankTier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaderboardRank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaderboardRank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MmrEstimate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MmrEstimate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profile)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
