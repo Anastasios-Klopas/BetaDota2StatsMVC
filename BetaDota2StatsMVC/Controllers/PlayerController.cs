@@ -47,36 +47,5 @@ namespace BetaDota2StatsMVC.Controllers
             }
             return View(profile);
         }
-        //public ActionResult Index()
-        //{
-        //    WinLose winLose = null;
-        //    using (var client = new HttpClient())
-        //    {
-        //        client.BaseAddress = new Uri($"https://api.opendota.com/api/");
-        //        var responseTask = client.GetAsync($"/players/{steamID}/wl ");
-        //        responseTask.Wait();
-        //        var result = responseTask.Result;
-        //        if (result.IsSuccessStatusCode)
-        //        {
-        //            //var readInfo = result.Content.ReadAsAsync<IList<ProfileViewModel>>();
-        //            var readInfo = result.Content.ReadAsAsync<WinLose>();
-        //            //JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings();
-        //            //jsonSerializerSettings.
-        //            var resultJSON = JsonConvert.DeserializeObject(readInfo.ToString());
-        //            readInfo.Wait();
-        //            winLose = readInfo.Result;
-        //            WinLose test1 = JsonConvert.DeserializeObject<WinLose>(readInfo.ToString());
-
-        //            Response.Write(test1.Win);
-        //        }
-        //        else
-        //        {
-        //            //return error code
-        //            winLose = (WinLose)Enumerable.Empty<WinLose>();
-        //            ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
-        //        }
-        //    }
-        //    return View(winLose);
-        //}
     }
 }

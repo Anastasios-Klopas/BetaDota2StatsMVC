@@ -129,7 +129,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Mmr_Estimate.cs" />
-    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\WinLose.cs" />
