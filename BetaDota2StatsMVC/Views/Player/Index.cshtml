@@ -11,63 +11,126 @@
     <h4>ProfileViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TrackedUntil)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrackedUntil)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Solocompetitive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Solocompetitive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CompetitiveRank)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CompetitiveRank)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RankTier)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RankTier)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LeaderboardRank)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LeaderboardRank)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MmrEstimate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MmrEstimate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Profile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Profile)
-        </dd>
-
     </dl>
+    <div>
+        <h4>Profile</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Mmr_Estimate.estimate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mmr_Estimate.estimate)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Account_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Account_id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Personaname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Personaname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Plus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Plus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Cheese)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Cheese)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Steamid)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Steamid)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Avatar)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Avatar)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Avatarmedium)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Avatarmedium)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Avatarfull)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Avatarfull)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.ProfileUrl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.ProfileUrl)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Last_login)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Last_login)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.LocCountryCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.LocCountryCode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Is_contributor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Is_contributor)
+            </dd>
+
+        </dl>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
