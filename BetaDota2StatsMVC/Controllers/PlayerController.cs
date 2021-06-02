@@ -11,7 +11,13 @@ namespace BetaDota2StatsMVC.Controllers
 {
     public class PlayerController : Controller
     {
-        private /*readonly*/ int steamID = 19445234;
+
+        private /*readonly*/ int steamID = 19445234; //me
+        //private /*readonly*/ int steamID = 154076558; //modeplex
+        //private /*readonly*/ int steamID = 62939497; //adreas
+        //private /*readonly*/ int steamID = 127517183; //utopia
+        //private /*readonly*/ int steamID = 56601974; //tomahoc
+        //private /*readonly*/ int steamID = 106158659; //random
         // GET: Player
         public ActionResult Index()
         {

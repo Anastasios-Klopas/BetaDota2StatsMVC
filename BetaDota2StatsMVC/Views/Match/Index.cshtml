@@ -1,0 +1,124 @@
+﻿@model IEnumerable<BetaDota2StatsMVC.Models.MatchViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Match_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player_slot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Radiant_win)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_mode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lobby_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hero_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Start_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Version)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kills)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deaths)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assists)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leaver_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Party_size)
+        </th>
+        <th></th>
+    </tr>
+    @{var count = 0;}
+@foreach (var item in Model) {
+    <tr>
+        @{
+            count++;
+         }
+        <td>
+            @Html.DisplayFor(modelItem => item.Match_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Player_slot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Radiant_win)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_mode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lobby_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hero_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Version)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kills)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deaths)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assists)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Leaver_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Party_size)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+</table>
+<hr />
+Total matches : @count
+
+
