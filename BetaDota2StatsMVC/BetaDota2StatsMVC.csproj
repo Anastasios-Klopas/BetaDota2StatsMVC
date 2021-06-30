@@ -129,6 +129,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\HeroesModelView.cs" />
     <Compile Include="Models\Hero.cs" />
     <Compile Include="Models\MatchViewModel.cs" />
     <Compile Include="Models\Mmr_Estimate.cs" />
