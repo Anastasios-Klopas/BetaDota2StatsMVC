@@ -7,9 +7,7 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -60,64 +58,66 @@
         <th></th>
     </tr>
     @{var count = 0;}
-@foreach (var item in Model) {
-    <tr>
-        @{
-            count++;
-         }
-        <td>
-            @Html.DisplayFor(modelItem => item.Match_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Player_slot)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Radiant_win)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Game_mode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lobby_type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hero_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Start_time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Version)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kills)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Deaths)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Assists)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Skill)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Leaver_status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Party_size)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            @{
+                count++;
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Match_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Player_slot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Radiant_win)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game_mode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lobby_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hero_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kills)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deaths)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assists)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Skill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Leaver_status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Party_size)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.PrimaryKey }) |*@
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 </table>
+
 <hr />
 Total matches : @count
 

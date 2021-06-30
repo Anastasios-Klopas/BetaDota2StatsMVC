@@ -10,10 +10,10 @@ namespace BetaDota2StatsMVC.Controllers
 {
     public class MatchController : Controller
     {
-        //private /*readonly*/ int steamID = 19445234; //me
+        private readonly int steamID = 19445234; //me
         //private /*readonly*/ int steamID = 154076558; //modeplex
         //private /*readonly*/ int steamID = 62939497; //adreas
-        private /*readonly*/ int steamID = 254846236; //marios
+        //private readonly int steamID = 254846236; //marios
         // GET: Match
         public ActionResult Index()
         {
