@@ -55,48 +55,48 @@ namespace BetaDota2StatsMVC.Controllers
                 HeroesModelView allHeroes12 = JsonConvert.DeserializeObject<HeroesModelView>(json);
                 JObject allHeroes1 = JObject.Parse(json);
 
-                //foreach (var item in allHeroes1)
-                //{
-                //    var results = allHeroes1[item.Key].Children().ToList();
+                foreach (var item in allHeroes1)
+                {
+                    var results = allHeroes1[item.Key].Children().ToList();
 
-                //    var valueA = item.Value;
-                //    var keyA = item.Key;
-                //    allHeroesFromJson.Add(int.Parse(item.Key), valueA);
-                //}
+                    var valueA = item.Value;
+                    var keyA = item.Key;
+                    allHeroesFromJson.Add(int.Parse(item.Key), valueA);
+                }
 
-                //json
-                //JObject googleSearch = JObject.Parse(googleSearchText);
+                json
+                JObject googleSearch = JObject.Parse(googleSearchText);
                 JObject allHeroesNew = JObject.Parse(json);
 
-                //// get JSON result objects into a list
-                //IList<JToken> results = googleSearch["responseData"]["results"].Children().ToList();
-                //foreach (var item in allHeroesNew)
-                //{
-                //    IList<JToken> results = allHeroesNew[item.Key].Children().ToList();
-                //}
+                // get JSON result objects into a list
+                IList<JToken> results = googleSearch["responseData"]["results"].Children().ToList();
+                foreach (var item in allHeroesNew)
+                {
+                    IList<JToken> results = allHeroesNew[item.Key].Children().ToList();
+                }
 
-                ////// serialize JSON results into .NET objects
-                //IList<Hero> heroes11 = new List<Hero>();
-                //foreach (JToken item1 in results)
-                //{
+                //// serialize JSON results into .NET objects
+                IList<Hero> heroes11 = new List<Hero>();
+                foreach (JToken item1 in results)
+                {
 
-                //}
-                //IList<SearchResult> searchResults = new List<SearchResult>();
-                //foreach (JToken result in results)
-                //{
-                //    // JToken.ToObject is a helper method that uses JsonSerializer internally
-                //    SearchResult searchResult = result.ToObject<SearchResult>();
-                //    searchResults.Add(searchResult);
-                //}
+                }
+                IList<SearchResult> searchResults = new List<SearchResult>();
+                foreach (JToken result in results)
+                {
+                    // JToken.ToObject is a helper method that uses JsonSerializer internally
+                    SearchResult searchResult = result.ToObject<SearchResult>();
+                    searchResults.Add(searchResult);
+                }
 
 
-                //IList<JToken> results = allHeroes1["1"].Children().ToList();
-                //List<int> allHeroesID = JsonConvert.DeserializeObject<List<int>>(json);
-                //List<Hero> allHeroes1 = JsonConvert.DeserializeObject<List<Hero>>(allHeroesID);
-                //List<>
-                //Dictionary<int,Hero> test1=
+                IList<JToken> results = allHeroes1["1"].Children().ToList();
+                List<int> allHeroesID = JsonConvert.DeserializeObject<List<int>>(json);
+                List<Hero> allHeroes1 = JsonConvert.DeserializeObject<List<Hero>>(allHeroesID);
+                List<>
+                Dictionary<int, Hero> test1 =
 
-                List<Hero> allHeroes = JsonConvert.DeserializeObject<List<Hero>>(json);
+                List <Hero> allHeroes = JsonConvert.DeserializeObject<List<Hero>>(json);
 
                 // Dictionary < allHeroesID,List<Hero>>=
                 //test thn lista
