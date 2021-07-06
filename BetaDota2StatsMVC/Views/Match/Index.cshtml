@@ -1,102 +1,147 @@
 ﻿@*@model IEnumerable<BetaDota2StatsMVC.Models.Match>*@
-@model IEnumerable<BetaDota2StatsMVC.Models.Match>
+@model BetaDota2StatsMVC.Models.MatchHeroViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<h2>Match History</h2>
+<hr />
+Total matches : @Model.Matches.Count()
+<hr />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Match_id)
+            @Html.DisplayNameFor(model => model.Match.Match_id)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Match.Player_slot)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Match.Radiant_win)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Player_slot)
+            @Html.DisplayNameFor(model => model.Match.Duration)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Radiant_win)
+            @Html.DisplayNameFor(model => model.Match.Game_mode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Duration)
+            @Html.DisplayNameFor(model => model.Match.Lobby_type)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Game_mode)
+            @Html.DisplayNameFor(model => model.Match.Hero_id)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Match.Start_time)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.Match.Version)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Match.Kills)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Lobby_type)
+            @Html.DisplayNameFor(model => model.Match.Deaths)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hero_id)
+            @Html.DisplayNameFor(model => model.Match.Assists)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Start_time)
+            @Html.DisplayNameFor(model => model.Match.Skill)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Version)
+            @Html.DisplayNameFor(model => model.Match.Leaver_status)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kills)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Deaths)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Assists)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Skill)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Leaver_status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Party_size)
+            @Html.DisplayNameFor(model => model.Match.Party_size)
         </th>
         <th></th>
     </tr>
-    @{var count = 0;}
-    @foreach (var item in Model)
+    @*@{var count = 0;}*@
+    @foreach (var item in Model.Matches)
     {
         <tr>
-            @{
-                count++;
-            }
+            @*@{
+                    count++;
+                }*@
             <td>
                 @Html.DisplayFor(modelItem => item.Match_id)
             </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Player_slot)
+                </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Player_slot)
+                @{
+                    var whoWon = "Dire";
+                    if (item.Radiant_win == true)
+                    {
+                        whoWon = "Radiant";
+                    }
+                }
+                @whoWon
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Radiant_win)
+                @{ 
+                    var durationHours = 0;
+                    var durationMinutes = 0;
+                    var durationSeconds = 0;
+                    if (item.Duration >= 3600)
+                    {
+                        durationHours = item.Duration /3600;
+                    }
+                    else if (item.Duration >= 60)
+                    {
+                        durationMinutes = item.Duration / 60;
+                        durationSeconds = item.Duration - durationMinutes * 60;
+                    }
+                    else
+                    {
+                        durationSeconds = item.Duration;
+                    }
+                }
+                <p>@durationHours:@durationMinutes:@durationSeconds</p>
+                @*@Html.DisplayFor(modelItem => item.Duration)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Duration)
+                @{
+                    if (item.Game_mode == 22)
+                    {
+                        <p>All Pick</p>
+                    }
+                    else
+                    {
+                        <p>No Info</p>
+                    }
+                }
+                @*@Html.DisplayFor(modelItem => item.Game_mode)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Game_mode)
+                @{
+                    if (item.Lobby_type == 0)
+                    {
+                        <p>Normal</p>
+                    }
+                    else if (item.Lobby_type == 7)
+                    {
+                        <p>Rank</p>
+                    }
+                }
+                @*@Html.DisplayFor(modelItem => item.Lobby_type)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Lobby_type)
+                @{
+                    var heroName = Model.Heroes.Where(x => x.Value.Id == item.Hero_id).Select(y => y.Value.Localized_name).FirstOrDefault();
+                }
+                @heroName
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hero_id)
-                @*@{
-                        ((HomeController)this.ViewContext.Controller).Method1();
-                    }*@
-                @*@{
-                    var a =
-                }*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Start_time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Version)
-            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Start_time)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Version)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Kills)
             </td>
@@ -107,24 +152,49 @@
                 @Html.DisplayFor(modelItem => item.Assists)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Skill)
+                @{
+                    if (item.Skill == 1)
+                    {
+                        <p>Normal</p>
+                    }
+                    else if (item.Skill == 2)
+                    {
+                        <p>High</p>
+                    }
+                    else
+                    {
+                        <p>Very High</p>
+                    }
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Leaver_status)
+                @{
+                    var leaver = "Yes";
+                    if (item.Leaver_status == 0)
+                    {
+                        leaver = "No";
+                    }
+                }
+                @leaver
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Party_size)
+                @{
+                    if (item.Party_size == 1)
+                    {
+                        <p>Solo</p>
+                    }
+                    else
+                    {
+                        <p>Party with @(item.Party_size - 1)</p>
+                    }
+                }
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id=item.PrimaryKey }) |*@
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) @*|
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
     }
 </table>
 
-<hr />
-Total matches : @count
 
 

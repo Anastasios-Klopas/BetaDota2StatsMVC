@@ -39,13 +39,18 @@ namespace BetaDota2StatsMVC.Controllers
                     ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
                 }
             }
-            var a = GetAllHeroes();
+            var allHeroes = GetAllHeroes();
+            var matchesWithHeroes = new MatchHeroViewModel()
+            {
+                Heroes = allHeroes,
+                Matches = matches
+            };
             //var bac = HeroName(matches);
             foreach (var item in matches)
             {
                 var heroName = HeroName(item);
             }
-            return View(matches);
+            return View(matchesWithHeroes);
         }
         public Dictionary<int,Hero> GetAllHeroes()
         {
