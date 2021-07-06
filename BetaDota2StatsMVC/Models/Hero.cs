@@ -7,34 +7,34 @@ namespace BetaDota2StatsMVC.Models
 {
     public class Hero
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string localized_name { get; set; }
-        public string primary_attr { get; set; }
-        public string attack_type { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Localized_name { get; set; }
+        public string Primary_attr { get; set; }
+        public string Attack_type { get; set; }
         public List<String> Roles { get; set; }
-        public string img { get; set; }
-        public string icon { get; set; }
-        public int base_health { get; set; }
-        public int? base_health_regen { get; set; }
-        public int base_mana { get; set; }
-        public int base_mana_regen { get; set; }
-        public int base_armor { get; set; }
-        public int base_mr { get; set; }
-        public int base_attack_min { get; set; }
-        public int base_attack_max { get; set; }
-        public int base_str { get; set; }
-        public int base_agi { get; set; }
-        public int base_int { get; set; }
-        public int str_gain { get; set; }
-        public int agi_gain { get; set; }
-        public int int_gain { get; set; }
-        public int attack_range { get; set; }
-        public int projectile_speed { get; set; }
-        public int attack_rate { get; set; }
-        public int move_speed { get; set; }
-        public int? turn_rate { get; set; }
-        public bool cm_enabled { get; set; }
-        public int legs { get; set; }
+        public string Img { get; set; }
+        public string Icon { get; set; }
+        public int Base_health { get; set; }
+        public decimal? Base_health_regen { get; set; }
+        public int Base_mana { get; set; }
+        public decimal Base_mana_regen { get; set; }
+        public decimal Base_armor { get; set; }
+        public int Base_mr { get; set; }
+        public int Base_attack_min { get; set; }
+        public int Base_attack_max { get; set; }
+        public int Base_str { get; set; }
+        public int Base_agi { get; set; }
+        public int Base_int { get; set; }
+        public decimal Str_gain { get; set; }
+        public decimal Agi_gain { get; set; }
+        public decimal Int_gain { get; set; }
+        public int Attack_range { get; set; }
+        public int Projectile_speed { get; set; }
+        public decimal Attack_rate { get; set; }
+        public int Move_speed { get; set; }
+        public decimal? Turn_rate { get; set; }
+        public bool Cm_enabled { get; set; }
+        public int Legs { get; set; }
     }
 }

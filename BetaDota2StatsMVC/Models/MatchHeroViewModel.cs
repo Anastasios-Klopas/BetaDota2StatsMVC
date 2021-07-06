@@ -5,9 +5,9 @@ using System.Web;
 
 namespace BetaDota2StatsMVC.Models
 {
-    public class HeroesModelView
+    public class MatchHeroViewModel
     {
-        public List<Hero> Hero { get; set; }
-        // na testarw me string HeroID
+        public Match Match { get; set; }
+        public Hero Hero { get; set; }
     }
 }

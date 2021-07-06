@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
 namespace BetaDota2StatsMVC.Models
 {
-    public class MatchViewModel
+    public class Match
     {
         public long Match_id { get; set; }
         public int Player_slot { get; set; }
@@ -22,5 +24,16 @@ namespace BetaDota2StatsMVC.Models
         public int? Skill { get; set; }
         public int Leaver_status { get; set; }
         public int? Party_size { get; set; }
+
+        //public Dictionary<int, Hero> GetAllHeroes()
+        //{
+        //    string SourcePath = "C:\\Users\\sapol\\source\\repos\\BetaDota2StatsMVC\\BetaDota2StatsMVC\\Data_JSON\\heroes.json";
+        //    using (StreamReader r = new StreamReader(SourcePath))
+        //    {
+        //        string json = r.ReadToEnd();
+        //        Dictionary<int, Hero> allHeroes999 = JsonConvert.DeserializeObject<Dictionary<int, Hero>>(json);
+        //        return allHeroes999;
+        //    }
+        //}
     }
 }
