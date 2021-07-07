@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Match History</h2>
+<h2>Matches History</h2>
 <hr />
 Total matches : @Model.Matches.Count()
 <hr />
@@ -83,26 +83,41 @@ Total matches : @Model.Matches.Count()
                 @whoWon
             </td>
             <td>
-                @{ 
-                    var durationHours = 0;
+                @{
+                    var durationHours = 0;//8elw integer
                     var durationMinutes = 0;
                     var durationSeconds = 0;
                     if (item.Duration >= 3600)
                     {
-                        durationHours = item.Duration /3600;
+                        durationHours = item.Duration / 3600;
                     }
-                    else if (item.Duration >= 60)
+                    if (item.Duration - durationHours * 3600 >= 60) 
                     {
-                        durationMinutes = item.Duration / 60;
-                        durationSeconds = item.Duration - durationMinutes * 60;
+                        durationMinutes = (item.Duration - durationHours * 3600) / 60;
                     }
-                    else
-                    {
-                        durationSeconds = item.Duration;
-                    }
+                    durationSeconds = item.Duration - durationHours * 3600 - durationMinutes * 60;
                 }
-                <p>@durationHours:@durationMinutes:@durationSeconds</p>
-                @*@Html.DisplayFor(modelItem => item.Duration)*@
+                @{ 
+                    var durationHour = $"{durationHours}";
+                    var durationMinute = $"{durationMinutes}";
+                    var durationSecond = $"{durationSeconds}";
+                    if(durationHours<10)
+                    {
+                        durationHour = $"0{durationHours}";
+                    }
+                    if (durationMinutes < 10)
+                    {
+                        durationMinute = $"0{durationMinutes}";
+                    }
+                    if (durationSeconds < 10)
+                    {
+                        durationSecond = $"0{durationSeconds}";
+                    }
+                    var duration = $"{durationHour}:{durationMinute}:{durationSecond}";
+                }
+                <p>@duration</p>
+                @*test gia na dw oti h diarkeia tou match einai komple. to api fernei to duration se deuterolepta H epibebaiwsh me to dotabuff*@
+                @Html.DisplayFor(modelItem => item.Duration)
             </td>
             <td>
                 @{
@@ -182,6 +197,10 @@ Total matches : @Model.Matches.Count()
                     if (item.Party_size == 1)
                     {
                         <p>Solo</p>
+                    }
+                    else if (item.Party_size == null)
+                    {
+                        <p>No Info</p>
                     }
                     else
                     {

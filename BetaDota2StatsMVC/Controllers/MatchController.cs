@@ -45,6 +45,8 @@ namespace BetaDota2StatsMVC.Controllers
                 Heroes = allHeroes,
                 Matches = matches
             };
+            //test me to party with so match id=3309906211
+            var match = matches.First(x => x.Match_id == 3309906211);
             //var bac = HeroName(matches);
             foreach (var item in matches)
             {
