@@ -70,17 +70,13 @@ namespace BetaDota2StatsMVC.Controllers
             var heroName = allHeroes.Where(a => a.Value.Id == match.Hero_id).Select(b => b.Value.Localized_name).FirstOrDefault();
             return heroName;
         }
-        public ActionResult MatchDetail(int? id)
+        public ActionResult MatchDetail(long? id)//h8ele long
         {
-            //opou id einai to matchID
-            //var ID = id; //giati null????
-            var ID = 6085789283;
-            //IEnumerable<Match> match = null;
             Match match = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri($"https://api.opendota.com/api/");
-                var responseTask = client.GetAsync($"matches/{ID}");
+                var responseTask = client.GetAsync($"matches/{id}");
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -97,8 +93,9 @@ namespace BetaDota2StatsMVC.Controllers
                     ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
                 }
             }
+            //sto debug na dw ti fernw
             var a = match;
-            return View("MatchDetail",a);
+            return View("MatchDetail",match);
         }
     }
 }
