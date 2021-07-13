@@ -5,7 +5,7 @@ namespace BetaDota2StatsMVC.Models
 {
     public class Player
     {
-        public int Match_Id { get; set; }
+        public long Match_Id { get; set; }
         public int Player_Slot { get; set; }
         //public IEnumerable<int> Ability_Upgrades_Arr { get; set; }
         public IList<int> Ability_Upgrades_Arr { get; set; }
@@ -15,7 +15,7 @@ namespace BetaDota2StatsMVC.Models
         public Object Ability_Uses { get; set; }
         public Object Ability_Targets { get; set; }
         public Object Damage_Targets { get; set; }
-        public int Account_Id { get; set; }
+        public long? Account_Id { get; set; }
         public Object Actions { get; set; }
         public Object Additional_Units { get; set; }
         public int Assists { get; set; }
@@ -140,7 +140,7 @@ namespace BetaDota2StatsMVC.Models
         //  {}
         //],
         public int Sen_Placed { get; set; }
-        public int Stuns { get; set; }
+        public decimal Stuns { get; set; }
         public IList<int> Times { get; set; }
         //"times": [
         //  0
@@ -154,7 +154,7 @@ namespace BetaDota2StatsMVC.Models
         //],
         public string Personaname { get; set; }
         public string Name { get; set; }
-        public DateTime Last_Login { get; set; }
+        public DateTime? Last_Login { get; set; }
         public bool Radiant_Win { get; set; }
         public int Start_time { get; set; }
         public int Duration { get; set; }
@@ -168,7 +168,7 @@ namespace BetaDota2StatsMVC.Models
         public int Lose { get; set; }
         public int Total_Gold { get; set; }
         public int Total_Xp { get; set; }
-        public int Kills_Per_Min { get; set; }
+        public decimal Kills_Per_Min { get; set; }
         public int Kda { get; set; }
         public int Abandons { get; set; }
         public int Neutral_Kills { get; set; }
@@ -184,8 +184,8 @@ namespace BetaDota2StatsMVC.Models
         public int Buyback_Count { get; set; }
         public int Observer_Uses { get; set; }
         public int Sentry_Uses { get; set; }
-        public int Lane_Efficiency { get; set; }
-        public int Lane_Efficiency_Pct { get; set; }
+        public decimal Lane_Efficiency { get; set; }
+        public decimal Lane_Efficiency_Pct { get; set; }
         public int Lane { get; set; }
         public int Lane_Role { get; set; }
         public bool Is_Roaming { get; set; }
@@ -196,8 +196,10 @@ namespace BetaDota2StatsMVC.Models
         public Object Purchase_Tpscroll { get; set; }
         public int Actions_Per_Min { get; set; }
         public int Life_State_Dead { get; set; }
-        public int Rank_Tier { get; set; }
-        public IList<int> Cosmetics { get; set; }
+        public int? Rank_Tier { get; set; }
+        //public IList<int> Cosmetics { get; set; }//error mhpws einai string
+        //public IList<string> Cosmetics { get; set; }//error mhpws einai string
+        public IList<Object> Cosmetics { get; set; }//error mhpws einai string
         //"cosmetics": [
         //  0
         //],

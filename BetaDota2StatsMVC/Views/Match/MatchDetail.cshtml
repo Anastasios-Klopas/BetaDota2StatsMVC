@@ -1,0 +1,275 @@
+﻿@model BetaDota2StatsMVC.Models.Match
+
+@{
+    ViewBag.Title = "MatchDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MatchDetail</h2>
+
+<div>
+    <h4>Match</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Match_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Match_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Barracks_Status_Dire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Barracks_Status_Dire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Barracks_Status_Radiant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Barracks_Status_Radiant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cluster)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cluster)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dire_Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dire_Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Engine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Engine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.First_Blood_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.First_Blood_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_Mode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_Mode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Human_Players)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Human_Players)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeagueId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeagueId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lobby_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lobby_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Match_Seq_Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Match_Seq_Num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Negative_Votes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Negative_Votes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Positive_Votes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Positive_Votes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Radiant_Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Radiant_Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Radiant_Win)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Radiant_Win)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Start_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tower_Status_Dire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tower_Status_Dire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tower_Status_Radiant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tower_Status_Radiant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Version)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Version)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Replay_Salt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Replay_Salt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Series_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Series_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Series_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Series_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Skill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Throw)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Throw)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comeback)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comeback)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Loss)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loss)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Win)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Win)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Replay_Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Replay_Url)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

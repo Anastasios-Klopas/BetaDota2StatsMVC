@@ -73,13 +73,14 @@ namespace BetaDota2StatsMVC.Controllers
         public ActionResult MatchDetail(int? id)
         {
             //opou id einai to matchID
-            var ID = id;
+            //var ID = id; //giati null????
+            var ID = 6085789283;
             //IEnumerable<Match> match = null;
             Match match = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri($"https://api.opendota.com/api/");
-                var responseTask = client.GetAsync($"matches/{id}");
+                var responseTask = client.GetAsync($"matches/{ID}");
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -97,7 +98,7 @@ namespace BetaDota2StatsMVC.Controllers
                 }
             }
             var a = match;
-            return View();
+            return View("MatchDetail",a);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace BetaDota2StatsMVC.Models
 {
     public class Match
     {
-        public int Match_Id { get; set; }
+        public long Match_Id { get; set; }
         public int Barracks_Status_Dire { get; set; }
         public int Barracks_Status_Radiant { get; set; }
         public IEnumerable<Chat> Chats;
@@ -22,7 +22,7 @@ namespace BetaDota2StatsMVC.Models
         public int Human_Players { get; set; }
         public int LeagueId { get; set; }
         public int Lobby_Type { get; set; }
-        public int Match_Seq_Num { get; set; }
+        public long Match_Seq_Num { get; set; }
         public int Negative_Votes { get; set; }
         // "objectives": {},
         public Object Objectives { get; set; }
@@ -57,6 +57,6 @@ namespace BetaDota2StatsMVC.Models
         public int Comeback { get; set; }
         public int Loss { get; set; }
         public int Win { get; set; }
-        public bool Replay_Url { get; set; }
+        public string Replay_Url { get; set; }
     }
 }
