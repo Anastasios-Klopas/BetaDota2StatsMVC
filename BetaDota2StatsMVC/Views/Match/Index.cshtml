@@ -209,7 +209,7 @@ Total matches : @Model.Matches.Count()
                 }
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Match Details", "MatchDetail", new { id=item.Match_id })
             </td>
         </tr>
     }

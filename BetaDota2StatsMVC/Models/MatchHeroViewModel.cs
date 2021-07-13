@@ -7,8 +7,8 @@ namespace BetaDota2StatsMVC.Models
 {
     public class MatchHeroViewModel
     {
-        public IEnumerable<Match> Matches { get; set; }
+        public IEnumerable<MatchesHistory> Matches { get; set; }
         public Dictionary<int, Hero> Heroes { get; set; }
-        public Match Match { get; set; }
+        public MatchesHistory Match { get; set; }
     }
 }

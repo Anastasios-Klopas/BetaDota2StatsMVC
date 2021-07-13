@@ -14,13 +14,10 @@ namespace BetaDota2StatsMVC.Controllers
     public class MatchController : Controller
     {
         private readonly int steamID = 19445234; //me
-        //private /*readonly*/ int steamID = 154076558; //modeplex
-        //private /*readonly*/ int steamID = 62939497; //antreas
-        //private readonly int steamID = 254846236; //marios
         // GET: Match
         public ActionResult Index()
         {
-            IEnumerable<Match> matches = null;
+            IEnumerable<MatchesHistory> matches = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri($"https://api.opendota.com/api/");
@@ -29,13 +26,13 @@ namespace BetaDota2StatsMVC.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readInfo = result.Content.ReadAsAsync<IList<Match>>();
+                    var readInfo = result.Content.ReadAsAsync<IList<MatchesHistory>>();
                     readInfo.Wait();
                     matches = readInfo.Result;
                 }
                 else
                 {
-                    matches = Enumerable.Empty<Match>();
+                    matches = Enumerable.Empty<MatchesHistory>();
                     ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
                 }
             }
@@ -65,13 +62,42 @@ namespace BetaDota2StatsMVC.Controllers
             }
         }
         //public string HeroName(IEnumerable<MatchViewModel> matches)
-        public string HeroName(Match match)
+        public string HeroName(MatchesHistory match)
         {
             //var heroID=matches.Select(m => m.Hero_id).FirstOrDefault();
             var allHeroes = GetAllHeroes();
             // var heroName = allHeroes.Where(a => a.Value.id == heroID).Select(b => b.Value.localized_name).FirstOrDefault();
             var heroName = allHeroes.Where(a => a.Value.Id == match.Hero_id).Select(b => b.Value.Localized_name).FirstOrDefault();
             return heroName;
+        }
+        public ActionResult MatchDetail(int? id)
+        {
+            //opou id einai to matchID
+            var ID = id;
+            //IEnumerable<Match> match = null;
+            Match match = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri($"https://api.opendota.com/api/");
+                var responseTask = client.GetAsync($"matches/{id}");
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    //var readInfo = result.Content.ReadAsAsync<IList<Match>>();
+                    var readInfo = result.Content.ReadAsAsync<Match>();
+                    readInfo.Wait();
+                    match = readInfo.Result;
+                }
+                else
+                {
+                    //match = Enumerable.Empty<Match>();
+                    match = null;
+                    ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
+                }
+            }
+            var a = match;
+            return View();
         }
     }
 }

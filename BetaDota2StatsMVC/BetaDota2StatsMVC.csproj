@@ -129,13 +129,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Buyback_Log.cs" />
+    <Compile Include="Models\Chat.cs" />
+    <Compile Include="Models\Connection_Log.cs" />
+    <Compile Include="Models\Draft_Timing.cs" />
     <Compile Include="Models\HeroesViewModel.cs" />
     <Compile Include="Models\Hero.cs" />
-    <Compile Include="Models\MatchHeroViewModel.cs" />
+    <Compile Include="Models\Kills_Log.cs" />
     <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\MatchHeroViewModel.cs" />
+    <Compile Include="Models\MatchesHistory.cs" />
     <Compile Include="Models\Mmr_Estimate.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Models\Purchase_Log.cs" />
+    <Compile Include="Models\Rune.cs" />
+    <Compile Include="Models\Runes_Log.cs" />
     <Compile Include="Models\WinLose.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
