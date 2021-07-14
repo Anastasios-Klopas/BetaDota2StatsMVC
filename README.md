@@ -8,4 +8,4 @@ Using my steam id u can see :
 2. Matches History
 3. Match Details
 
-For other profile u can change in controllers the value in steamID.
+For other profile u can change in controllers (player/match) the value in steamID.
