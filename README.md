@@ -14,4 +14,5 @@ Using my steam id u can see :
 For other profile u can change in controllers (player/match) the value in steamID.
 
 This site make calls to OpenDota Api endpoints.
-Heroes retrieved from heroes.json file, thanks https://github.com/odota/dotaconstants repository
+Heroes retrieved from heroes.json file,
+thanks https://github.com/odota/dotaconstants repository
