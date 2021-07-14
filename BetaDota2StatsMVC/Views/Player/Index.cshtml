@@ -5,33 +5,90 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
 <div>
-    <h4>ProfileViewModel</h4>
+    <h4>User Profile Info</h4>
     <hr />
     <dl class="dl-horizontal">
     </dl>
     <div>
-        <h4>Profile</h4>
-        <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Rank_tier)
+                @Html.DisplayNameFor(model => model.Profile.Account_id)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Rank_tier)
+                @Html.DisplayFor(model => model.Profile.Account_id)
             </dd>
-           
+
             <dt>
-                @Html.DisplayNameFor(model => model.Tracked_until)
+                @Html.DisplayNameFor(model => model.Profile.Personaname)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Tracked_until)
+                @Html.DisplayFor(model => model.Profile.Personaname)
             </dd>
-           
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Plus)
+            </dt>
+            @{
+                if (Model.Profile.Plus)
+                {
+                    <dd>
+                        YES
+                    </dd>
+                }
+                else
+                {
+                    <dd>
+                        NO
+                    </dd>
+                }
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Steamid)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Steamid)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Avatar)
+            </dt>
+            @{
+                var avatar = Model.Profile.Avatar;
+            }
+            <dd>
+                <img src="@avatar" alt="Not Found">
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.ProfileUrl)
+            </dt>
+            @{
+                var profile = Model.Profile.ProfileUrl;
+            }
+            <dd>
+                <a href="@profile">User Profile</a>
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.Last_login)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.Last_login)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Profile.LocCountryCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Profile.LocCountryCode)
+            </dd>
         </dl>
         <dl class="dl-horizontal">
             <dt>
@@ -55,112 +112,6 @@
             <dd>
                 @Html.DisplayFor(model => model.Competitive_rank)
             </dd>
-        </dl>
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Account_id)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Account_id)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Personaname)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Personaname)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Name)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Name)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Plus)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Plus)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Cheese)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Cheese)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Steamid)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Steamid)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Avatar)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Avatar)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Avatarmedium)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Avatarmedium)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Avatarfull)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Avatarfull)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.ProfileUrl)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.ProfileUrl)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Last_login)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Last_login)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.LocCountryCode)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.LocCountryCode)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Profile.Is_contributor)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Profile.Is_contributor)
-            </dd>
-
         </dl>
     </div>
 </div>
