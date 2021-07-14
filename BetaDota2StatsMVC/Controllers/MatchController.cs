@@ -37,7 +37,7 @@ namespace BetaDota2StatsMVC.Controllers
                 }
             }
             var allHeroes = GetAllHeroes();
-            var matchesWithHeroes = new MatchHeroViewModel()
+            var matchesWithHeroes = new MatchesHeroesViewModel()
             {
                 Heroes = allHeroes,
                 Matches = matches
@@ -93,9 +93,15 @@ namespace BetaDota2StatsMVC.Controllers
                     ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
                 }
             }
+            var allHeroes = GetAllHeroes();
+            var matchesWithHeroes = new MatchHeroViewModel()
+            {
+                Heroes = allHeroes,
+                Match = match
+            };
             //sto debug na dw ti fernw
             var a = match;
-            return View("MatchDetail",match);
+            return View("MatchDetail",matchesWithHeroes);
         }
     }
 }

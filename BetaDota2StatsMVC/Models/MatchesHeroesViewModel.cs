@@ -5,9 +5,10 @@ using System.Web;
 
 namespace BetaDota2StatsMVC.Models
 {
-    public class MatchHeroViewModel
+    public class MatchesHeroesViewModel
     {
-        public Match Match { get; set; }
+        public IEnumerable<MatchesHistory> Matches { get; set; }
         public Dictionary<int, Hero> Heroes { get; set; }
+        public MatchesHistory Match { get; set; }
     }
 }

@@ -137,8 +137,9 @@
     <Compile Include="Models\Hero.cs" />
     <Compile Include="Models\Kills_Log.cs" />
     <Compile Include="Models\Match.cs" />
-    <Compile Include="Models\MatchHeroViewModel.cs" />
+    <Compile Include="Models\MatchesHeroesViewModel.cs" />
     <Compile Include="Models\MatchesHistory.cs" />
+    <Compile Include="Models\MatchHeroViewModel.cs" />
     <Compile Include="Models\Mmr_Estimate.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Profile.cs" />
