@@ -197,6 +197,8 @@
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Match\Index.cshtml" />
     <Content Include="Views\Match\MatchDetail.cshtml" />
+    <Content Include="Views\Player\Error.cshtml" />
+    <Content Include="Views\Match\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

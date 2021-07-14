@@ -14,98 +14,136 @@ namespace BetaDota2StatsMVC.Controllers
 {
     public class MatchController : Controller
     {
-        private readonly int steamID = 19445234; //me
+        //private readonly int steamID = 19445234; //me
+        private const int steamID = 19445234; //me
         // GET: Match
         public ActionResult Index(int? page)
         {
             IEnumerable<MatchesHistory> matches = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri($"https://api.opendota.com/api/");
-                var responseTask = client.GetAsync($"players/{steamID}/matches");
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                try
                 {
-                    var readInfo = result.Content.ReadAsAsync<IList<MatchesHistory>>();
-                    readInfo.Wait();
-                    matches = readInfo.Result;
+                    client.BaseAddress = new Uri($"https://api.opendota.com/api/");
+                    var responseTask = client.GetAsync($"players/{steamID}/matches");
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readInfo = result.Content.ReadAsAsync<IList<MatchesHistory>>();
+                        readInfo.Wait();
+                        matches = readInfo.Result;
+                    }
+                    else
+                    {
+                        matches = Enumerable.Empty<MatchesHistory>();
+                        ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
+                        return View("Error");
+                    }
+                    var allHeroes = GetAllHeroes();
+                    //added paged list
+                    int pageSize = 20;
+                    int pageNumber = page ?? 1;
+                    var matchesWithHeroes = new MatchesHeroesViewModel()
+                    {
+                        Heroes = allHeroes,
+                        Matches = matches.ToPagedList(pageNumber, pageSize)
+                    };
+                    //test me to party with so match id=3309906211
+                    var match = matches.First(x => x.Match_id == 3309906211);
+                    //var bac = HeroName(matches);
+                    foreach (var item in matches)
+                    {
+                        var heroName = HeroName(item);
+                    }
+                    return View(matchesWithHeroes);
                 }
-                else
+                catch(Exception ex)
                 {
-                    matches = Enumerable.Empty<MatchesHistory>();
-                    ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
+                    throw;
                 }
             }
-            var allHeroes = GetAllHeroes();
-            //added paged list
-            int pageSize = 20;
-            int pageNumber = page ?? 1;
-            var matchesWithHeroes = new MatchesHeroesViewModel()
-            {
-                Heroes = allHeroes,
-                Matches = matches.ToPagedList(pageNumber,pageSize)
-            };
-            //test me to party with so match id=3309906211
-            var match = matches.First(x => x.Match_id == 3309906211);
-            //var bac = HeroName(matches);
-            foreach (var item in matches)
-            {
-                var heroName = HeroName(item);
-            }
-            return View(matchesWithHeroes);
         }
         public Dictionary<int,Hero> GetAllHeroes()
         {
-            string SourcePath = "C:\\Users\\sapol\\source\\repos\\BetaDota2StatsMVC\\BetaDota2StatsMVC\\Data_JSON\\heroes.json";
-            using (StreamReader r = new StreamReader(SourcePath))
+            try
             {
-                string json = r.ReadToEnd();
-                Dictionary<int,Hero> allHeroes999 = JsonConvert.DeserializeObject<Dictionary<int,Hero>>(json);
-                return allHeroes999;
+                string heroesJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Data_JSON\heroes.json");
+                string allHeroes = System.IO.File.ReadAllText(heroesJsonPath);
+                Dictionary<int, Hero> allHeroesInfo = JsonConvert.DeserializeObject<Dictionary<int, Hero>>(allHeroes);
+                return allHeroesInfo;
             }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            //string _dannyBoyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\Danny boy.json");
+            //string SourcePath = "C:\\Users\\sapol\\source\\repos\\BetaDota2StatsMVC\\BetaDota2StatsMVC\\Data_JSON\\heroes.json";
+            //string ooo = System.IO.File.ReadAllText(/*to path pou 8elw*/);
+            //using (StreamReader r = new StreamReader(SourcePath))
+            //{
+            //    string json = r.ReadToEnd();
+            //    Dictionary<int,Hero> allHeroes999 = JsonConvert.DeserializeObject<Dictionary<int,Hero>>(json);
+            //    return allHeroes999;
+            //}
         }
         //public string HeroName(IEnumerable<MatchViewModel> matches)
         public string HeroName(MatchesHistory match)
         {
-            //var heroID=matches.Select(m => m.Hero_id).FirstOrDefault();
-            var allHeroes = GetAllHeroes();
-            // var heroName = allHeroes.Where(a => a.Value.id == heroID).Select(b => b.Value.localized_name).FirstOrDefault();
-            var heroName = allHeroes.Where(a => a.Value.Id == match.Hero_id).Select(b => b.Value.Localized_name).FirstOrDefault();
-            return heroName;
+            try
+            {
+                //var heroID=matches.Select(m => m.Hero_id).FirstOrDefault();
+                var allHeroes = GetAllHeroes();
+                // var heroName = allHeroes.Where(a => a.Value.id == heroID).Select(b => b.Value.localized_name).FirstOrDefault();
+                var heroName = allHeroes.Where(a => a.Value.Id == match.Hero_id).Select(b => b.Value.Localized_name).FirstOrDefault();
+                return heroName;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+
         }
         public ActionResult MatchDetail(long? id)//h8ele long
         {
-            Match match = null;
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri($"https://api.opendota.com/api/");
-                var responseTask = client.GetAsync($"matches/{id}");
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                Match match = null;
+                using (var client = new HttpClient())
                 {
-                    //var readInfo = result.Content.ReadAsAsync<IList<Match>>();
-                    var readInfo = result.Content.ReadAsAsync<Match>();
-                    readInfo.Wait();
-                    match = readInfo.Result;
+                    client.BaseAddress = new Uri($"https://api.opendota.com/api/");
+                    var responseTask = client.GetAsync($"matches/{id}");
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        //var readInfo = result.Content.ReadAsAsync<IList<Match>>();
+                        var readInfo = result.Content.ReadAsAsync<Match>();
+                        readInfo.Wait();
+                        match = readInfo.Result;
+                    }
+                    else
+                    {
+                        //match = Enumerable.Empty<Match>();
+                        match = null;
+                        ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
+                    }
                 }
-                else
+                var allHeroes = GetAllHeroes();
+                var matchesWithHeroes = new MatchHeroViewModel()
                 {
-                    //match = Enumerable.Empty<Match>();
-                    match = null;
-                    ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
-                }
+                    Heroes = allHeroes,
+                    Match = match
+                };
+                //sto debug na dw ti fernw
+                var a = match;
+                return View("MatchDetail", matchesWithHeroes);
             }
-            var allHeroes = GetAllHeroes();
-            var matchesWithHeroes = new MatchHeroViewModel()
+            catch (Exception ex)
             {
-                Heroes = allHeroes,
-                Match = match
-            };
-            //sto debug na dw ti fernw
-            var a = match;
-            return View("MatchDetail",matchesWithHeroes);
+                throw;
+            }
         }
     }
 }

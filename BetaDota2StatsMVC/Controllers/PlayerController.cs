@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,41 +13,55 @@ namespace BetaDota2StatsMVC.Controllers
     public class PlayerController : Controller
     {
 
-        private /*readonly*/ int steamID = 19445234; //me
+        //private /*readonly*/ int steamID = 19445234; //me
+        private const /*readonly*/ int steamID = 19445234; //me
         // GET: Player
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            ProfileViewModel profile = null;
+            //ProfileViewModel profile = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri($"https://api.opendota.com/api/");
-                var responseTask = client.GetAsync($"players/{steamID}");
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                try
                 {
-                    //var readInfo = result.Content.ReadAsAsync<IList<ProfileViewModel>>();
-                    var readInfo = result.Content.ReadAsAsync<ProfileViewModel>();
-                    //JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings();
-                    //jsonSerializerSettings.
-                    //var resultJSON = JsonConvert.DeserializeObject(readInfo.ToString());
-                    readInfo.Wait();
-                    profile = readInfo.Result;
-                    //ProfileViewModel test1 = JsonConvert.DeserializeObject<ProfileViewModel>(readInfo.ToString());
+                    client.BaseAddress = new Uri($"https://api.opendota.com/api/");
+                    //var responseTask = client.GetAsync($"players/{steamID}");
+                    var responseTask = await client.GetAsync($"players/{steamID}");
+                    //responseTask.Wait();
+                    //var result = responseTask.Result;
+                    if (responseTask.IsSuccessStatusCode)
+                    {
+                        var readInfo = await responseTask.Content.ReadAsAsync<ProfileViewModel>();
+                        return View(readInfo);
+                        //var readInfo = result.Content.ReadAsAsync<IList<ProfileViewModel>>();
+                        //JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings();
+                        //jsonSerializerSettings.
+                        //var resultJSON = JsonConvert.DeserializeObject(readInfo.ToString());
+                        //readInfo.Wait();
+                        //profile = readInfo.Result;
+                        //ProfileViewModel test1 = JsonConvert.DeserializeObject<ProfileViewModel>(readInfo.ToString());
 
+                        //ProfileViewModel test1 = new ProfileViewModel();
 
-                    //ProfileViewModel test1 = new ProfileViewModel();
+                        //Response.Write(test1.Profile.avatar);
+                        //}
+                    }
+                    else
+                    {
+                        return View("Error");
+                        //    //return error code
+                        //    //profile = (ProfileViewModel)Enumerable.Empty<ProfileViewModel>();
+                        //    ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
+                        //}
+                        //return View(await responseTask.Content.ReadAsAsync<ProfileViewModel>());
+                    }
 
-                    //Response.Write(test1.Profile.avatar);
                 }
-                else
+                catch (Exception ex)
                 {
-                    //return error code
-                    //profile = (ProfileViewModel)Enumerable.Empty<ProfileViewModel>();
-                    ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
+                    throw;
                 }
+                //na balw ena view otan dn einai success to status code
             }
-            return View(profile);
         }
     }
 }
