@@ -1,6 +1,7 @@
 ﻿@*@model IEnumerable<BetaDota2StatsMVC.Models.Match>*@
 @*@model BetaDota2StatsMVC.Models.MatchesHeroesViewModel*@
 @model BetaDota2StatsMVC.Models.MatchesHeroesViewModel
+@using PagedList.Mvc
 
 @{
     ViewBag.Title = "Index";
@@ -8,8 +9,6 @@
 }
 
 <h2>Matches History</h2>
-<hr />
-Total matches : @Model.Matches.Count()
 <hr />
 <table class="table">
     <tr>
@@ -92,17 +91,17 @@ Total matches : @Model.Matches.Count()
                     {
                         durationHours = item.Duration / 3600;
                     }
-                    if (item.Duration - durationHours * 3600 >= 60) 
+                    if (item.Duration - durationHours * 3600 >= 60)
                     {
                         durationMinutes = (item.Duration - durationHours * 3600) / 60;
                     }
                     durationSeconds = item.Duration - durationHours * 3600 - durationMinutes * 60;
                 }
-                @{ 
+                @{
                     var durationHour = $"{durationHours}";
                     var durationMinute = $"{durationMinutes}";
                     var durationSecond = $"{durationSeconds}";
-                    if(durationHours<10)
+                    if (durationHours < 10)
                     {
                         durationHour = $"0{durationHours}";
                     }
@@ -210,11 +209,10 @@ Total matches : @Model.Matches.Count()
                 }
             </td>
             <td>
-                @Html.ActionLink("Match Details", "MatchDetail", new { id=item.Match_id })
+                @Html.ActionLink("Match Details", "MatchDetail", new { id = item.Match_id })
             </td>
         </tr>
     }
 </table>
-
-
-
+Page @(Model.Matches.PageCount < Model.Matches.PageNumber ? 0 : Model.Matches.PageNumber) of @Model.Matches.PageCount
+@Html.PagedListPager(Model.Matches, page => Url.Action("Index", new { page }))

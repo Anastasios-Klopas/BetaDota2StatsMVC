@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace BetaDota2StatsMVC.Controllers
 {
@@ -15,7 +16,7 @@ namespace BetaDota2StatsMVC.Controllers
     {
         private readonly int steamID = 19445234; //me
         // GET: Match
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             IEnumerable<MatchesHistory> matches = null;
             using (var client = new HttpClient())
@@ -37,10 +38,13 @@ namespace BetaDota2StatsMVC.Controllers
                 }
             }
             var allHeroes = GetAllHeroes();
+            //added paged list
+            int pageSize = 20;
+            int pageNumber = page ?? 1;
             var matchesWithHeroes = new MatchesHeroesViewModel()
             {
                 Heroes = allHeroes,
-                Matches = matches
+                Matches = matches.ToPagedList(pageNumber,pageSize)
             };
             //test me to party with so match id=3309906211
             var match = matches.First(x => x.Match_id == 3309906211);
