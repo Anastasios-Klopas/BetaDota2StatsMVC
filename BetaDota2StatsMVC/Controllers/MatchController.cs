@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Threading.Tasks;
 
 namespace BetaDota2StatsMVC.Controllers
 {
@@ -16,23 +17,25 @@ namespace BetaDota2StatsMVC.Controllers
     {
         //private readonly int steamID = 19445234; //me
         private const int steamID = 19445234; //me
+        public async Task<ActionResult> Index(int? page)
         // GET: Match
-        public ActionResult Index(int? page)
+        //public ActionResult Index(int? page)
         {
-            IEnumerable<MatchesHistory> matches = null;
-            using (var client = new HttpClient())
+            try
             {
-                try
+                IEnumerable<MatchesHistory> matches = null;
+                using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri($"https://api.opendota.com/api/");
-                    var responseTask = client.GetAsync($"players/{steamID}/matches");
-                    responseTask.Wait();
-                    var result = responseTask.Result;
-                    if (result.IsSuccessStatusCode)
+                    var responseTask = await client.GetAsync($"players/{steamID}/matches");
+                    //responseTask.Wait();
+                    //var result = responseTask.Result;
+                    if (responseTask.IsSuccessStatusCode)//result.Is se responceTask.Is
                     {
-                        var readInfo = result.Content.ReadAsAsync<IList<MatchesHistory>>();
-                        readInfo.Wait();
-                        matches = readInfo.Result;
+                        var readInfo = await responseTask.Content.ReadAsAsync<IList<MatchesHistory>>();
+                        //readInfo.Wait();
+                        //matches = readInfo.Result;
+                        matches = readInfo;
                     }
                     else
                     {
@@ -40,31 +43,34 @@ namespace BetaDota2StatsMVC.Controllers
                         ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
                         return View("Error");
                     }
-                    var allHeroes = GetAllHeroes();
-                    //added paged list
-                    int pageSize = 20;
-                    int pageNumber = page ?? 1;
-                    var matchesWithHeroes = new MatchesHeroesViewModel()
-                    {
-                        Heroes = allHeroes,
-                        Matches = matches.ToPagedList(pageNumber, pageSize)
-                    };
-                    //test me to party with so match id=3309906211
-                    var match = matches.First(x => x.Match_id == 3309906211);
-                    //var bac = HeroName(matches);
-                    foreach (var item in matches)
-                    {
-                        var heroName = HeroName(item);
-                    }
-                    return View(matchesWithHeroes);
+
+
                 }
-                catch(Exception ex)
+                var allHeroes = GetAllHeroes();
+                //added paged list
+                int pageSize = 20;
+                int pageNumber = page ?? 1;
+                var matchesWithHeroes = new MatchesHeroesViewModel()
                 {
-                    throw;
+                    Heroes = allHeroes,
+                    Matches = matches.ToPagedList(pageNumber, pageSize)
+                };
+                //test me to party with sto match id=3309906211
+                var match = matches.First(x => x.Match_id == 3309906211);
+                //var bac = HeroName(matches);
+                foreach (var item in matches)
+                {
+                    var heroName = HeroName(item);
                 }
+                return View(matchesWithHeroes);
             }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
-        public Dictionary<int,Hero> GetAllHeroes()
+        public Dictionary<int, Hero> GetAllHeroes()
         {
             try
             {
@@ -105,7 +111,7 @@ namespace BetaDota2StatsMVC.Controllers
 
 
         }
-        public ActionResult MatchDetail(long? id)//h8ele long
+        public async Task<ActionResult> MatchDetail(long? id)//h8ele long
         {
             try
             {
@@ -113,21 +119,23 @@ namespace BetaDota2StatsMVC.Controllers
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri($"https://api.opendota.com/api/");
-                    var responseTask = client.GetAsync($"matches/{id}");
-                    responseTask.Wait();
-                    var result = responseTask.Result;
-                    if (result.IsSuccessStatusCode)
+                    var responseTask = await client.GetAsync($"matches/{id}");
+                    //responseTask.Wait();
+                    //var result = responseTask.Result;
+                    if (responseTask.IsSuccessStatusCode)//allagh result.Is se responceTask.Is
                     {
                         //var readInfo = result.Content.ReadAsAsync<IList<Match>>();
-                        var readInfo = result.Content.ReadAsAsync<Match>();
-                        readInfo.Wait();
-                        match = readInfo.Result;
+                        var readInfo = await responseTask.Content.ReadAsAsync<Match>();
+                        //readInfo.Wait();
+                        //match = readInfo.Result;
+                        match = readInfo;
                     }
                     else
                     {
                         //match = Enumerable.Empty<Match>();
                         match = null;
                         ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
+                        return View("Error");
                     }
                 }
                 var allHeroes = GetAllHeroes();
