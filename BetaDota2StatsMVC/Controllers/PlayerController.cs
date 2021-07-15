@@ -45,21 +45,18 @@ namespace BetaDota2StatsMVC.Controllers
                         //Response.Write(test1.Profile.avatar);
                         //}
                     }
-                    else
-                    {
-                        return View("Error");
                         //    //return error code
                         //    //profile = (ProfileViewModel)Enumerable.Empty<ProfileViewModel>();
                         //    ModelState.AddModelError(string.Empty, "Server error occured. Please contact Admin for help!");
                         //}
                         //return View(await responseTask.Content.ReadAsAsync<ProfileViewModel>());
-                    }
 
                 }
                 catch (Exception ex)
                 {
                     throw;
                 }
+                return View("Error");
                 //na balw ena view otan dn einai success to status code
             }
         }
